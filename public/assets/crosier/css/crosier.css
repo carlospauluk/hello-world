@@ -1,0 +1,70 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 02/09/2017, 12:34:33
+    Author     : Carlos
+*/
+
+
+input, select {
+    text-transform: uppercase;
+}
+
+.input-error {
+    background-color: lightyellow;
+    border-color: red;
+}
+
+.input-error-msg {
+    font-size: smaller;
+}
+
+input[type=submit], input[type=button]  {
+    text-transform: none;
+}
+
+.crsr-dec2,
+.crsr-dec3,
+.crsr-money
+{
+    text-align: right;
+    text-transform: none;
+}
+
+
+.table-hover tbody tr:hover {
+    background-color: lightcoral;
+}
+
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+    url('http://i.stack.imgur.com/FhHRx.gif')
+    50% 50%
+    no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading .modal {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
