@@ -2,33 +2,39 @@
 
 namespace App\Entity\crm;
 
-use App\Entity\base\EntityId;
+use Doctrine\ORM\Mapping as ORM;
 
-
-class Cliente extends EntityId {
-
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\ClienteRepository")
+ */
+class Cliente
+{
     /**
-     * @Assert\NotBlank()
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
      */
-	public $nome;
+    private $id;
+    
     /**
-     * @return mixed
+     * @ORM\Column(type="string", length=255)
      */
-    public function getNome()
+    private $nome;
+    
+    public function getId()
+    {
+        return $this->id;
+    }
+    
+    public function getNome(): ?string
     {
         return $this->nome;
     }
-
-    /**
-     * @param mixed $nome
-     */
-    public function setNome($nome)
+    
+    public function setNome(string $nome): self
     {
         $this->nome = $nome;
+        
+        return $this;
     }
-
-	
-	
-
-	
 }

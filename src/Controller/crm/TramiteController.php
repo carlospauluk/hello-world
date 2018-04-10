@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller\crm;
 
 use App\Entity\crm\Tramite;
@@ -11,44 +12,48 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\crm\Cliente;
 
-class TramiteController extends Controller
-{
-
-    /**
-     *
-     * @Route("/crm/tramite/form")
-     */
-    public function new(Request $request)
-    {
-        $tramite = new Tramite();
-        
-        $cliente = new Cliente();
-        $cliente->setNome("TESTE FRISIA");
-        
-        $tramite->setCliente($cliente);
-        $tramite->setDescricao("NOVO PEDIDO DE CAMISETAS DA FRISIA");
-        $tramite->setDtEntrada(new \DateTime('yesterday'));
-        
-        $form = $this->createForm(TramiteType::class, $tramite);
-        
-        $form->handleRequest($request);
-        
-        if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $tramite = $form->getData();
-            
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            // $entityManager = $this->getDoctrine()->getManager();
-            // $entityManager->persist($task);
-            // $entityManager->flush();
-            
-            return $this->redirectToRoute('task_success');
-        }
-        
-        return $this->render('crm/tramiteForm.html.twig', array(
-            'form' => $form->createView()
-        ));
-    }
+class TramiteController extends Controller {
+	
+	/**
+	 *
+	 * @Route("/crm/tramite/form")
+	 */
+	public function new(Request $request) {
+		$tramite = new Tramite ();
+		
+		$cliente = new Cliente ();
+		$cliente->setNome ( "TESTE FRISIA" );
+		
+// 		$tramite->setCliente ( $cliente );
+		$tramite->setDescricao ( "NOVO PEDIDO DE CAMISETAS DA FRISIA" );
+		$tramite->setDtEntrada ( new \DateTime ( 'yesterday' ) );
+		
+		$tramite->setInserted(new \DateTime('now'));
+		$tramite->setUpdated(new \DateTime('now'));
+		
+		
+		$form = $this->createForm ( TramiteType::class, $tramite );
+		
+		$form->handleRequest ( $request );
+		
+		if ($form->isSubmitted () && $form->isValid ()) {
+			// $form->getData() holds the submitted values
+			// but, the original `$task` variable has also been updated
+			$tramite = $form->getData ();
+			
+			// ... perform some action, such as saving the task to the database
+			// for example, if Task is a Doctrine entity, save it!
+			// $entityManager = $this->getDoctrine()->getManager();
+			// $entityManager->persist($task);
+			// $entityManager->flush();
+			
+			return $this->redirectToRoute ( 'task_success' );
+		} else {
+		    $form->getErrors(true, false);
+		}
+		
+		return $this->render ( 'crm/tramiteForm.html.twig', array (
+				'form' => $form->createView () 
+		) );
+	}
 }
