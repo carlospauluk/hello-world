@@ -24,9 +24,13 @@ class TramiteController extends Controller {
 		$cliente = new Cliente ();
 		$cliente->setNome ( "TESTE FRISIA" );
 		
-		$tramite->setCliente ( $cliente );
+// 		$tramite->setCliente ( $cliente );
 		$tramite->setDescricao ( "NOVO PEDIDO DE CAMISETAS DA FRISIA" );
 		$tramite->setDtEntrada ( new \DateTime ( 'yesterday' ) );
+		
+		$tramite->setInserted(new \DateTime('now'));
+		$tramite->setUpdated(new \DateTime('now'));
+		
 		
 		$form = $this->createForm ( TramiteType::class, $tramite );
 		
@@ -44,6 +48,8 @@ class TramiteController extends Controller {
 			// $entityManager->flush();
 			
 			return $this->redirectToRoute ( 'task_success' );
+		} else {
+		    $form->getErrors(true, false);
 		}
 		
 		return $this->render ( 'crm/tramiteForm.html.twig', array (

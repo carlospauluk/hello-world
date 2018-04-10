@@ -12,8 +12,7 @@ class TramiteType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('descricao')
+        $builder->add('descricao')
             ->add('dtEntrada')
             ->add('save', SubmitType::class);
     }

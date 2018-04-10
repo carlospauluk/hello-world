@@ -2,80 +2,56 @@
 
 namespace App\Entity\crm;
 
-use App\Entity\base\EntityId;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
-class Tramite extends EntityId {
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\TramiteRepository")
+ */
+class Tramite
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
+    private $id;
 
     /**
-     * @Assert\NotNull()
-     * @Assert\Type("Cliente")
+     * @ORM\Column(type="string", length=2000)
      */
-    public $cliente;
+    private $descricao;
 
     /**
-     * @Assert\NotBlank()
+     * @ORM\Column(type="datetime")
      */
-	public $descricao;
+    private $dtEntrada;
 
-	/**
-	 * @Assert\NotBlank()
-	 * @Assert\Type("\DateTime")
-	 */
-	public $dtEntrada;
-	
-	// public $histAtual;
-
-    /**
-     * @return mixed
-     */
-    public function getCliente()
+    public function getId()
     {
-        return $this->cliente;
+        return $this->id;
     }
 
-    /**
-     * @param mixed $cliente
-     */
-    public function setCliente(Cliente $cliente)
-    {
-        $this->cliente = $cliente;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getDescricao()
+    public function getDescricao(): ?string
     {
         return $this->descricao;
     }
 
-    /**
-     * @param mixed $descricao
-     */
-    public function setDescricao($descricao)
+    public function setDescricao(string $descricao): self
     {
         $this->descricao = $descricao;
+
+        return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDtEntrada()
+    public function getDtEntrada(): ?\DateTimeInterface
     {
         return $this->dtEntrada;
     }
 
-    /**
-     * @param mixed $dtEntrada
-     */
-    public function setDtEntrada(\DateTime $dtEntrada)
+    public function setDtEntrada(\DateTimeInterface $dtEntrada): self
     {
         $this->dtEntrada = $dtEntrada;
+
+        return $this;
     }
-
-    
-	
-
-	
 }
