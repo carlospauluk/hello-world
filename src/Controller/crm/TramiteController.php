@@ -19,27 +19,26 @@ class TramiteController extends Controller {
 	 * @Route("/crm/tramite/form")
 	 */
 	public function new(Request $request) {
-		$tramite = new Tramite ();
+		$tramite = new Tramite();
 		
-		$cliente = new Cliente ();
-		$cliente->setNome ( "TESTE FRISIA" );
+		$cliente = new Cliente();
+		$cliente->setNome("TESTE FRISIA");
 		
-// 		$tramite->setCliente ( $cliente );
-		$tramite->setDescricao ( "NOVO PEDIDO DE CAMISETAS DA FRISIA" );
-		$tramite->setDtEntrada ( new \DateTime ( 'yesterday' ) );
+		// $tramite->setCliente ( $cliente );
+		$tramite->setDescricao("NOVO PEDIDO DE CAMISETAS DA FRISIA");
+		$tramite->setDtEntrada(new \DateTime('yesterday'));
 		
 		$tramite->setInserted(new \DateTime('now'));
 		$tramite->setUpdated(new \DateTime('now'));
 		
+		$form = $this->createForm(TramiteType::class, $tramite);
 		
-		$form = $this->createForm ( TramiteType::class, $tramite );
+		$form->handleRequest($request);
 		
-		$form->handleRequest ( $request );
-		
-		if ($form->isSubmitted () && $form->isValid ()) {
+		if ($form->isSubmitted() && $form->isValid()) {
 			// $form->getData() holds the submitted values
 			// but, the original `$task` variable has also been updated
-			$tramite = $form->getData ();
+			$tramite = $form->getData();
 			
 			// ... perform some action, such as saving the task to the database
 			// for example, if Task is a Doctrine entity, save it!
@@ -47,13 +46,13 @@ class TramiteController extends Controller {
 			// $entityManager->persist($task);
 			// $entityManager->flush();
 			
-			return $this->redirectToRoute ( 'task_success' );
+			return $this->redirectToRoute('task_success');
 		} else {
-		    $form->getErrors(true, false);
+			$form->getErrors(true, false);
 		}
 		
-		return $this->render ( 'crm/tramiteForm.html.twig', array (
-				'form' => $form->createView () 
-		) );
+		return $this->render('crm/tramiteForm.html.twig', array (
+				'form' => $form->createView() 
+		));
 	}
 }
