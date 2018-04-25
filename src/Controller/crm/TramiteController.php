@@ -13,20 +13,17 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\crm\Cliente;
 
 class TramiteController extends Controller {
-	
+
 	/**
 	 *
 	 * @Route("/crm/tramite/form")
 	 */
-	public function new(Request $request) {
+	public function save(Request $request) {
 		$tramite = new Tramite();
 		
-		$cliente = new Cliente();
-		$cliente->setNome("TESTE FRISIA");
 		
-		// $tramite->setCliente ( $cliente );
-		$tramite->setDescricao("NOVO PEDIDO DE CAMISETAS DA FRISIA");
-		$tramite->setDtEntrada(new \DateTime('yesterday'));
+// 		$tramite->setDescricao("NOVO PEDIDO DE CAMISETAS DA FRISIA");
+// 		$tramite->setDtEntrada(new \DateTime('yesterday'));
 		
 		$tramite->setInserted(new \DateTime('now'));
 		$tramite->setUpdated(new \DateTime('now'));
