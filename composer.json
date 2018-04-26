@@ -25,7 +25,7 @@
         "symfony/web-link": "^4.0",
         "symfony/webpack-encore-pack": "*",
         "symfony/yaml": "^4.0",
-        "primefaces/primeui": "*"
+        "components/jqueryui": "1.*"
     },
     "require-dev": {
         "sensiolabs/security-checker": "^4.1",

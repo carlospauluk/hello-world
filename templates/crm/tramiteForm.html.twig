@@ -9,5 +9,22 @@
 {{ form_widget(form) }}
 {{ form_end(form) }}
 
+
+<input class="datepicker"></input>
+
 {% endblock %}
+
+
+{% block bottom_scripts %}
+
+<script type="text/javascript">
+$(document).ready(function () {
+	alert('foi');
+    $( ".datepicker" ).datepicker();
+
+    });
+</script>
+
+{% endblock %}
+
 
