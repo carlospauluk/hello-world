@@ -19,7 +19,8 @@ class TramiteType extends AbstractType {
 			->add('dtEntrada', DateType::class, array (
 				'widget' => 'single_text',
 				'format' => 'dd/MM/yyyy',
-				'label' => 'Dt Entrada' 
+				'label' => 'Dt Entrada',
+				'attr' => array ('class' => 'datepicker')
 		))
 			->add('save', SubmitType::class, array (
 				'label' => 'Salvar' 

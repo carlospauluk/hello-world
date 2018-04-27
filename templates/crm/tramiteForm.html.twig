@@ -5,12 +5,12 @@
 
 {% block page_content %}
 
+<h1>Trâmite</h1>
+
 {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}
 
-
-<input class="datepicker"></input>
 
 {% endblock %}
 
@@ -18,11 +18,12 @@
 {% block bottom_scripts %}
 
 <script type="text/javascript">
-$(document).ready(function () {
-	alert('foi');
-    $( ".datepicker" ).datepicker();
+	$(document).ready(function() {
+		$(".datepicker").datepicker({
+			dateFormat : "dd/mm/yy"
+		});
 
-    });
+	});
 </script>
 
 {% endblock %}
