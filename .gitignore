@@ -1,4 +1,4 @@
-
+/.git-credentials
 ###> symfony/framework-bundle ###
 /.env
 /public/bundles/
